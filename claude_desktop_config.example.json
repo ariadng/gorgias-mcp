@@ -1,16 +1,16 @@
 {
   "mcpServers": {
     "gorgias": {
-      "command": "node",
+      "command": "npx",
       "args": [
-        "/home/pampam/personal/gorgias-mcp/dist/index.js",
+        "gorgias-mcp",
         "start",
         "--domain",
-        "bahtera",
+        "your-domain",
         "--username",
-        "ariadng@gmail.com",
+        "your-email",
         "--api-key",
-        "c1f098fc19746105b5cc9782f086594c61541f27a4cfb76a85e4b3fc7d0381a4"
+        "your-api-key"
       ]
     }
   }

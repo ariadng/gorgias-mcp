@@ -2,6 +2,11 @@
 
 A Model Context Protocol (MCP) server that integrates with the Gorgias customer support platform to extract customer email data for automation projects.
 
+## Quick Start
+
+**Jump to AI Assistant Setup:**
+- [Claude Desktop](#claude-desktop) | [Windsurf](#windsurf) | [Cursor](#cursor)
+
 ## Features
 
 - **Complete API Integration**: Full integration with Gorgias API including tickets, customers, and messages
@@ -17,10 +22,17 @@ A Model Context Protocol (MCP) server that integrates with the Gorgias customer 
 ### Prerequisites
 
 - Node.js 18+ 
-- npm or yarn
 - A Gorgias account with API access
 
-### Install from npm (when published)
+### Using npx (Recommended)
+
+No installation required! Use directly with npx:
+
+```bash
+npx gorgias-mcp test --domain your-domain --username your-email --api-key your-api-key
+```
+
+### Global Installation
 
 ```bash
 npm install -g gorgias-mcp
@@ -29,7 +41,7 @@ npm install -g gorgias-mcp
 ### Install from source
 
 ```bash
-git clone https://github.com/your-username/gorgias-mcp.git
+git clone https://github.com/ariadng/gorgias-mcp.git
 cd gorgias-mcp
 npm install
 npm run build
@@ -76,22 +88,22 @@ Alternatively, create a `config.json` file:
 
 #### Test Connection
 ```bash
-gorgias-mcp test --domain your-domain --username your-email --api-key your-api-key
+npx gorgias-mcp test --domain your-domain --username your-email --api-key your-api-key
 ```
 
 #### Start MCP Server
 ```bash
-gorgias-mcp start --domain your-domain --username your-email --api-key your-api-key
+npx gorgias-mcp start --domain your-domain --username your-email --api-key your-api-key
 ```
 
 #### List Available Tools
 ```bash
-gorgias-mcp tools
+npx gorgias-mcp tools
 ```
 
 #### Using Configuration File
 ```bash
-gorgias-mcp start --config config.json
+npx gorgias-mcp start --config config.json
 ```
 
 ### MCP Tools
@@ -158,8 +170,8 @@ Add to your Claude Desktop configuration (`claude_desktop_config.json`):
 {
   "mcpServers": {
     "gorgias": {
-      "command": "gorgias-mcp",
-      "args": ["start", "--domain", "your-domain", "--username", "your-email", "--api-key", "your-api-key"]
+      "command": "npx",
+      "args": ["gorgias-mcp", "start", "--domain", "your-domain", "--username", "your-email", "--api-key", "your-api-key"]
     }
   }
 }
@@ -173,8 +185,8 @@ Add to your Windsurf MCP configuration:
 {
   "mcpServers": {
     "gorgias": {
-      "command": "gorgias-mcp",
-      "args": ["start"],
+      "command": "npx",
+      "args": ["gorgias-mcp", "start"],
       "env": {
         "GORGIAS_DOMAIN": "your-domain",
         "GORGIAS_USERNAME": "your-email",
@@ -187,7 +199,7 @@ Add to your Windsurf MCP configuration:
 
 ### Cursor
 
-Similar to Windsurf, add the server configuration to your Cursor MCP settings.
+Similar to Windsurf, add the server configuration to your Cursor MCP settings using `npx`.
 
 ## Development
 
@@ -273,7 +285,7 @@ The server includes comprehensive error handling:
 Enable debug logging to see detailed information:
 
 ```bash
-gorgias-mcp start --debug
+npx gorgias-mcp start --debug
 ```
 
 ### Testing Connection
@@ -281,7 +293,7 @@ gorgias-mcp start --debug
 Test your connection without starting the full server:
 
 ```bash
-gorgias-mcp test --domain your-domain --username your-email --api-key your-api-key --debug
+npx gorgias-mcp test --domain your-domain --username your-email --api-key your-api-key --debug
 ```
 
 ## Contributing
