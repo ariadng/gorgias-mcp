@@ -1,0 +1,67 @@
+{
+  "name": "gorgias-mcp",
+  "version": "1.0.0",
+  "description": "Model Context Protocol (MCP) server for Gorgias customer support platform - extract customer email data for automation projects",
+  "main": "dist/index.js",
+  "type": "module",
+  "bin": {
+    "gorgias-mcp": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsx src/index.ts",
+    "test": "jest",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run build && npm test",
+    "prepack": "npm run build"
+  },
+  "files": [
+    "dist/**/*",
+    "LICENSE",
+    "README.md",
+    "config.example.json",
+    "claude_desktop_config.example.json"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ariadng/gorgias-mcp.git"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "gorgias",
+    "customer-support",
+    "email-extraction",
+    "automation",
+    "ai-assistant",
+    "claude",
+    "windsurf",
+    "cursor",
+    "typescript",
+    "nodejs"
+  ],
+  "author": "Aria Dhanang <ariadng@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ariadng/gorgias-mcp/issues"
+  },
+  "homepage": "https://github.com/ariadng/gorgias-mcp#readme",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.16.0",
+    "axios": "^1.10.0",
+    "commander": "^14.0.0",
+    "dotenv": "^17.2.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "@types/node": "^24.0.14",
+    "jest": "^30.0.4",
+    "ts-jest": "^29.4.0",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3"
+  }
+}

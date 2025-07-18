@@ -1,0 +1,11 @@
+{
+  "domain": "your-domain-here",
+  "username": "your-username-here",
+  "apiKey": "your-api-key-here",
+  "timeout": 30000,
+  "rateLimit": 40,
+  "transport": "stdio",
+  "debug": false,
+  "retryAttempts": 3,
+  "retryDelay": 1000
+}
