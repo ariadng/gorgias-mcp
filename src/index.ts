@@ -7,14 +7,32 @@ import { GorgiasMCPServer } from './server.js';
 import { ServerConfig } from './types/config.js';
 
 // Load environment variables
-dotenv.config();
+// Detect MCP mode to silence dotenv output
+const isMCPMode = process.argv.includes('start') && !process.argv.includes('--debug');
+
+if (!isMCPMode) {
+  dotenv.config();
+} else {
+  // In MCP mode, load env vars silently without dotenv output
+  try {
+    const envFile = readFileSync('.env', 'utf8');
+    envFile.split('\n').forEach(line => {
+      const [key, value] = line.split('=');
+      if (key && value && !process.env[key]) {
+        process.env[key] = value;
+      }
+    });
+  } catch {
+    // .env file doesn't exist or can't be read, continue
+  }
+}
 
 const program = new Command();
 
 program
   .name('gorgias-mcp')
   .description('Gorgias MCP Server for customer support data extraction')
-  .version('1.0.0');
+  .version('1.0.2');
 
 // Start command (default server behavior)
 program

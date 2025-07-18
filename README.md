@@ -318,6 +318,15 @@ For issues and questions:
 
 ## Changelog
 
+### v1.0.2
+- Fixed Claude Desktop JSON parsing errors caused by console output
+- Disabled logging and dotenv output in MCP mode to prevent protocol interference
+- Improved MCP protocol compatibility
+
+### v1.0.1
+- Fixed colored logging output interfering with MCP JSON protocol
+- Added MCP mode detection to disable console output when needed
+
 ### v1.0.0
 - Initial release
 - Full Gorgias API integration
