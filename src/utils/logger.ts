@@ -9,11 +9,18 @@ export class Logger {
   private level: LogLevel;
   private timestamp: boolean;
   private colorize: boolean;
+  private enabled: boolean;
 
   constructor(level: LogLevel = LogLevel.INFO, options: { timestamp?: boolean; colorize?: boolean } = {}) {
     this.level = level;
     this.timestamp = options.timestamp ?? true;
-    this.colorize = options.colorize ?? true;
+    
+    // Detect MCP mode (start command without --debug)
+    const isMCPMode = process.argv.includes('start') && !process.argv.includes('--debug');
+    
+    // Disable all logging in MCP mode to prevent JSON protocol interference
+    this.enabled = !isMCPMode;
+    this.colorize = isMCPMode ? false : (options.colorize ?? true);
   }
 
   private formatMessage(level: string, message: string, ...args: any[]): string {
@@ -37,25 +44,25 @@ export class Logger {
   }
 
   debug(message: string, ...args: any[]): void {
-    if (this.level <= LogLevel.DEBUG) {
+    if (this.enabled && this.level <= LogLevel.DEBUG) {
       console.debug(this.formatMessage('DEBUG', message, ...args));
     }
   }
 
   info(message: string, ...args: any[]): void {
-    if (this.level <= LogLevel.INFO) {
+    if (this.enabled && this.level <= LogLevel.INFO) {
       console.info(this.formatMessage('INFO', message, ...args));
     }
   }
 
   warn(message: string, ...args: any[]): void {
-    if (this.level <= LogLevel.WARN) {
+    if (this.enabled && this.level <= LogLevel.WARN) {
       console.warn(this.formatMessage('WARN', message, ...args));
     }
   }
 
   error(message: string, ...args: any[]): void {
-    if (this.level <= LogLevel.ERROR) {
+    if (this.enabled && this.level <= LogLevel.ERROR) {
       console.error(this.formatMessage('ERROR', message, ...args));
     }
   }

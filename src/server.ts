@@ -25,7 +25,7 @@ export class GorgiasMCPServer {
     this.config = config;
     this.logger = new Logger(
       config.debug ? LogLevel.DEBUG : LogLevel.INFO,
-      { timestamp: true, colorize: true }
+      { timestamp: true, colorize: !process.argv.includes('start') || config.debug }
     );
 
     this.server = new Server({

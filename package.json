@@ -1,6 +1,6 @@
 {
   "name": "gorgias-mcp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Model Context Protocol (MCP) server for Gorgias customer support platform - extract customer email data for automation projects",
   "main": "dist/index.js",
   "type": "module",
