@@ -1,6 +1,6 @@
-# Gorgias MCP Server
+# Gorgias MCP Server - Complete Automation Platform 🚀
 
-A Model Context Protocol (MCP) server that integrates with the Gorgias customer support platform to extract customer email data for automation projects.
+A comprehensive Model Context Protocol (MCP) server that transforms Gorgias customer support into a complete automation platform. Extract data, send automated replies, update tickets, create customers, and manage the entire customer service workflow programmatically.
 
 ## Quick Start
 
@@ -9,13 +9,20 @@ A Model Context Protocol (MCP) server that integrates with the Gorgias customer 
 
 ## Features
 
-- **Complete API Integration**: Full integration with Gorgias API including tickets, customers, and messages
-- **Rate Limiting**: Built-in rate limiting to respect Gorgias API limits (40 requests per 20 seconds)
-- **Error Handling**: Comprehensive error handling with retry logic and exponential backoff
-- **Multiple Output Formats**: Support for JSON, CSV, and table formats for data export
-- **CLI Interface**: Easy-to-use command-line interface with multiple commands
-- **TypeScript**: Fully typed with comprehensive interfaces for all API responses
-- **MCP Compatible**: Works with Claude Desktop, Windsurf, Cursor, and other MCP-compatible AI assistants
+- **🤖 Complete Automation Platform**: 12 comprehensive tools for full customer service automation
+- **📨 Automated Messaging**: Send replies, internal notes, and simulate incoming messages
+- **🎫 Ticket Management**: Update status, assignee, tags, priority, and metadata
+- **👥 Customer Operations**: Create customers and get detailed information with integrations
+- **🔍 Advanced Search**: Search tickets with complex filtering and text queries
+- **📊 Activity Tracking**: Monitor events and activities across your support workflow
+- **🔗 Integration Management**: List and validate email integrations for automated replies
+- **⚡ Smart Fallbacks**: Intelligent API fallbacks for maximum compatibility
+- **🚦 Rate Limiting**: Built-in rate limiting to respect Gorgias API limits (40 requests per 20 seconds)
+- **🛡️ Error Handling**: Comprehensive error handling with retry logic and exponential backoff
+- **📋 Multiple Output Formats**: Support for JSON, CSV, and table formats for data export
+- **⌨️ CLI Interface**: Easy-to-use command-line interface with multiple commands
+- **📝 TypeScript**: Fully typed with comprehensive interfaces for all API responses
+- **🔌 MCP Compatible**: Works with Claude Desktop, Windsurf, Cursor, and other MCP-compatible AI assistants
 
 ## Installation
 
@@ -108,7 +115,9 @@ npx gorgias-mcp start --config config.json
 
 ### MCP Tools
 
-The server provides 5 MCP tools for AI assistants:
+The server provides **12 comprehensive MCP tools** for complete customer service automation:
+
+## Core Data Extraction Tools (v1.0.0)
 
 #### 1. `gorgias_list_tickets`
 List tickets with filtering options.
@@ -159,6 +168,88 @@ Extract customer email data in spreadsheet format.
 - `include_satisfaction` (optional): Include satisfaction scores
 - `format` (optional): Output format (json, csv, table)
 - `limit` (optional): Maximum customers to extract
+
+## Advanced Automation Tools (v2.0.0) 🚀
+
+#### 6. `gorgias_send_reply`
+Send automated replies, internal notes, or simulate incoming messages.
+
+**Parameters:**
+- `ticket_id` (required): Target ticket ID to reply to
+- `message_type` (required): Type of message ("outgoing", "internal-note", "incoming")
+- `body_text` (required): Plain text message content
+- `body_html` (optional): HTML formatted message content
+- `sender_email` (required): Email of the sender
+- `receiver_email` (optional): Customer email for outgoing messages
+- `subject` (optional): Message subject
+- `source_from_address` (optional): Source email address
+
+#### 7. `gorgias_update_ticket`
+Update ticket properties including status, assignee, tags, and priority.
+
+**Parameters:**
+- `ticket_id` (required): Ticket ID to update
+- `status` (optional): New ticket status ("open", "closed", "spam")
+- `assignee_user_id` (optional): ID of user to assign ticket to
+- `tags` (optional): Array of tags to set on ticket
+- `priority` (optional): Ticket priority level ("low", "normal", "high", "urgent")
+- `subject` (optional): Update ticket subject
+- `meta` (optional): Custom metadata object
+
+#### 8. `gorgias_get_customer`
+Get detailed customer information including channels and integrations.
+
+**Parameters:**
+- `customer_id` (required): Customer ID to retrieve
+- `include_channels` (optional): Include communication channels (default: true)
+- `include_integrations` (optional): Include e-commerce integration data (default: true)
+- `include_meta` (optional): Include custom metadata fields (default: true)
+
+#### 9. `gorgias_create_customer`
+Create new customers for automation workflows.
+
+**Parameters:**
+- `email` (required): Customer email address (must be unique)
+- `firstname` (optional): Customer first name
+- `lastname` (optional): Customer last name
+- `external_id` (optional): External system ID for customer
+- `channels` (optional): Communication channels for customer
+- `meta` (optional): Custom metadata for customer
+
+#### 10. `gorgias_list_events`
+Get activity/event history for tickets, customers, and users.
+
+**Parameters:**
+- `object_type` (optional): Filter events by object type ("ticket", "customer", "user", "message")
+- `object_id` (optional): Filter events for specific object ID
+- `event_type` (optional): Filter by specific event type
+- `user_id` (optional): Filter events by user who performed the action
+- `limit` (optional): Maximum number of events to return (default: 50, max: 100)
+- `cursor` (optional): Pagination cursor
+- `order_by` (optional): Sort order for events
+
+#### 11. `gorgias_search_tickets`
+Advanced ticket search with text queries and complex filtering.
+
+**Parameters:**
+- `query` (required): Search text to find in ticket subject, messages, or customer data
+- `channel` (optional): Filter by communication channel ("email", "chat", "phone", "sms", "api")
+- `status` (optional): Filter by ticket status ("open", "closed", "spam")
+- `assignee_user_id` (optional): Filter by assigned user ID
+- `customer_email` (optional): Filter by customer email address
+- `tags` (optional): Filter by tag names (AND logic)
+- `date_from` (optional): Filter tickets created after this date
+- `date_to` (optional): Filter tickets created before this date
+- `limit` (optional): Maximum results to return (default: 50, max: 100)
+- `cursor` (optional): Pagination cursor
+
+#### 12. `gorgias_get_integrations`
+List available email integrations for reply validation and management.
+
+**Parameters:**
+- `type` (optional): Filter integrations by type ("email", "chat", "social", "ecommerce")
+- `active_only` (optional): Only return active/enabled integrations (default: true)
+- `limit` (optional): Maximum integrations to return (default: 50)
 
 ## AI Assistant Integration
 
@@ -317,6 +408,20 @@ For issues and questions:
 3. Open an issue on GitHub with logs and configuration details
 
 ## Changelog
+
+### v2.0.0 - Complete Automation Platform 🚀
+- **MAJOR UPDATE**: Added 7 new automation tools for complete customer service automation
+- **gorgias_send_reply**: Send automated replies, internal notes, and simulated incoming messages
+- **gorgias_update_ticket**: Update ticket status, assignee, tags, priority, and metadata
+- **gorgias_get_customer**: Get detailed customer information with channels and integrations
+- **gorgias_create_customer**: Create new customers programmatically for automation workflows
+- **gorgias_list_events**: Get activity/event history with fallback to ticket activity
+- **gorgias_search_tickets**: Advanced ticket search with text queries and complex filtering
+- **gorgias_get_integrations**: List email integrations for reply validation
+- Enhanced error handling for write operations
+- Intelligent API fallbacks for maximum compatibility
+- Based on official Gorgias API documentation
+- Total: **12 comprehensive tools** for complete customer service automation
 
 ### v1.0.2
 - Fixed Claude Desktop JSON parsing errors caused by console output

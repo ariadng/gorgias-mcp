@@ -138,3 +138,78 @@ export const ERROR_CODES = {
 } as const;
 
 export type ErrorCode = typeof ERROR_CODES[keyof typeof ERROR_CODES];
+
+// New interfaces for additional tools
+
+export interface MessageRequest {
+  ticket_id: number;
+  message_type: 'outgoing' | 'internal-note' | 'incoming';
+  body_text: string;
+  body_html?: string;
+  sender_email: string;
+  receiver_email?: string;
+  subject?: string;
+  source_from_address?: string;
+}
+
+export interface TicketUpdate {
+  ticket_id: number;
+  status?: 'open' | 'closed' | 'spam';
+  assignee_user_id?: number | null;
+  tags?: Array<{name: string}>;
+  priority?: 'low' | 'normal' | 'high' | 'urgent';
+  subject?: string;
+  meta?: Record<string, any>;
+}
+
+export interface CustomerCreate {
+  email: string;
+  firstname?: string;
+  lastname?: string;
+  external_id?: string;
+  channels?: Array<{type: string; address: string}>;
+  meta?: Record<string, any>;
+}
+
+export interface CustomerDetails extends Customer {
+  integrations?: Integration[];
+}
+
+export interface Event {
+  id: number;
+  object_type: string;
+  object_id: number;
+  event_type: string;
+  user_id?: number;
+  user?: User;
+  data?: Record<string, any>;
+  created_datetime: string;
+}
+
+export interface TicketSearchQuery {
+  query: string;
+  channel?: 'email' | 'chat' | 'phone' | 'sms' | 'api';
+  status?: 'open' | 'closed' | 'spam';
+  assignee_user_id?: number;
+  customer_email?: string;
+  tags?: string[];
+  date_from?: string;
+  date_to?: string;
+  limit?: number;
+  cursor?: string;
+}
+
+export interface Integration {
+  id: number;
+  name: string;
+  type: string;
+  enabled: boolean;
+  settings: {
+    email?: string;
+    from_name?: string;
+    reply_to?: string;
+    [key: string]: any;
+  };
+  created_datetime: string;
+  updated_datetime?: string;
+}

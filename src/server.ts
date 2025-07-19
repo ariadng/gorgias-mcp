@@ -110,6 +110,28 @@ export class GorgiasMCPServer {
           case 'gorgias_extract_customer_emails':
             return await this.toolHandlers.handleExtractCustomerEmails(args);
           
+          // New automation tools
+          case 'gorgias_send_reply':
+            return await this.toolHandlers.handleSendReply(args);
+          
+          case 'gorgias_update_ticket':
+            return await this.toolHandlers.handleUpdateTicket(args);
+          
+          case 'gorgias_get_customer':
+            return await this.toolHandlers.handleGetCustomer(args);
+          
+          case 'gorgias_create_customer':
+            return await this.toolHandlers.handleCreateCustomer(args);
+          
+          case 'gorgias_list_events':
+            return await this.toolHandlers.handleListEvents(args);
+          
+          case 'gorgias_search_tickets':
+            return await this.toolHandlers.handleSearchTickets(args);
+          
+          case 'gorgias_get_integrations':
+            return await this.toolHandlers.handleGetIntegrations(args);
+          
           default:
             throw new McpError(ErrorCode.MethodNotFound, `Unknown tool: ${name}`);
         }
