@@ -508,8 +508,8 @@ export class ToolHandlers {
       const result = await this.gorgiasClient.getIntegrations(sanitizedArgs);
 
       const integrationsList = result.data.map(integration => {
-        const emailInfo = integration.settings.email ? ` | Email: ${integration.settings.email}` : '';
-        const fromNameInfo = integration.settings.from_name ? ` | From: ${integration.settings.from_name}` : '';
+        const emailInfo = integration.settings?.email ? ` | Email: ${integration.settings.email}` : '';
+        const fromNameInfo = integration.settings?.from_name ? ` | From: ${integration.settings.from_name}` : '';
         return `ID: ${integration.id} | ${integration.name} | Type: ${integration.type} | Status: ${integration.enabled ? 'Active' : 'Inactive'}${emailInfo}${fromNameInfo}`;
       }).join('\n');
 

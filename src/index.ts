@@ -32,7 +32,7 @@ const program = new Command();
 program
   .name('gorgias-mcp')
   .description('Gorgias MCP Server for customer support data extraction')
-  .version('2.0.0');
+  .version('2.0.1');
 
 // Start command (default server behavior)
 program
